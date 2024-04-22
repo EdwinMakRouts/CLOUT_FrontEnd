@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { catchError, map, of } from 'rxjs';
-import { Post } from 'src/app/core/models/post';
+import { Post, PostLiked } from 'src/app/core/models/post';
 import { PostService } from 'src/app/core/services/post/post.service';
 import { SignalsService } from 'src/app/core/services/signals/signals.service';
 import { ToastService } from 'src/app/shared/utils/toast.service';
@@ -40,8 +40,8 @@ export class LikedOutfitsPage implements OnInit {
           this.loading = false;
           return;
         }
-        this.likedPosts = response.data;
-        this.likedPosts.forEach((post: Post, index: number) => {
+        this.likedPosts = response;
+        this.likedPosts.forEach((post: PostLiked, index: number) => {
           if (index % 3 == 0) {
             this.arrayOfArrays.push([post]);
           } else {

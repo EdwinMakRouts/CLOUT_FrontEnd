@@ -59,7 +59,6 @@ export class HomePage implements OnInit {
 
   ionViewDidEnter() {
     this.getPosts(this.userSignal().id);
-    this.getTags();
     this.cd.detectChanges();
   }
 
@@ -159,25 +158,6 @@ export class HomePage implements OnInit {
   async refreshPage(ev: any) {
     await this.getPosts(this.userSignal().id);
     ev.target.complete();
-  }
-
-  private getTags() {
-    this.postService
-      .getTags()
-      .pipe(
-        catchError((error) => {
-          return of(error);
-        })
-      )
-      .subscribe((response) => {
-        if (!response.error) {
-          console.log('LO QUE ME LLEGA DE LOS TAGS ES ESTO: ', response);
-          this.etiquetas = response;
-          return;
-        }
-        if (response.error.message)
-          this.toastService.presentToast(response.error.message);
-      });
   }
 
   goToProfile(username: string) {
