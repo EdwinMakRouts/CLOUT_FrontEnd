@@ -126,23 +126,6 @@
           [(ngModel)]="description"
         ></ion-textarea>
       </ion-item>
-      <ion-list>
-        <ion-item lines="none">
-          <ion-select
-            id="text-etiquetas"
-            aria-label="Etiquetas"
-            placeholder="Añade algunas etiquetas"
-            [multiple]="true"
-            [(ngModel)]="selectedEtiquetas"
-          >
-            <ion-select-option
-              *ngFor="let etiqueta of etiquetas"
-              [value]="etiqueta.value"
-              >{{etiqueta.label}}</ion-select-option
-            >
-          </ion-select>
-        </ion-item>
-      </ion-list>
     </ion-content>
   </ng-template>
 </ion-modal>

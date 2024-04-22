@@ -65,12 +65,7 @@ export class HomePage implements OnInit {
   async post() {
     const imgToSend = this.img.replace('data:image/jpeg;base64,', '');
     this.postService
-      .post(
-        this.description,
-        imgToSend,
-        this.userSignal().id,
-        this.selectedEtiquetas
-      )
+      .post(this.description, imgToSend, this.userSignal().id)
       .pipe(
         catchError((error) => {
           return of(error);
@@ -82,7 +77,6 @@ export class HomePage implements OnInit {
         else {
           this.posts.unshift(response);
           console.warn('LO QUE ENVIO ES: ', imgToSend);
-          console.warn('Etiquetas seleccionadas:', this.selectedEtiquetas);
           console.log('LO QUE RECIBO DE LA RESPONSE ES: ', response);
         }
       });
