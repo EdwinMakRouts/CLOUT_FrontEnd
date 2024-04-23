@@ -118,12 +118,15 @@
           </ion-col>
         </ion-button>
       </div>
-      <ion-item lines="none">
+      <ion-item lines="none" class="description-holder">
         <ion-textarea
           type="text"
           id="text-descripcion"
           placeholder="Descripción del post"
           [(ngModel)]="description"
+          [autoGrow]="true"
+          [maxlength]="255"
+          [counter]="true"
         ></ion-textarea>
       </ion-item>
     </ion-content>
