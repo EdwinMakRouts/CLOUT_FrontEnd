@@ -173,4 +173,8 @@ export class OtherProfilePage implements OnInit {
   goToOutfit(id: number) {
     this.navCtrl.navigateForward(['post', id]);
   }
+
+  goBack() {
+    this.navCtrl.back();
+  }
 }

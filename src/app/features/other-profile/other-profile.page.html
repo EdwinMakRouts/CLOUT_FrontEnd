@@ -1,5 +1,14 @@
-<ion-header>
-  <ion-toolbar> </ion-toolbar>
+<ion-header [translucent]="true">
+  <ion-toolbar id="close-placeholder">
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon
+          src="../../../assets/icons/ic-close.svg"
+          id="close-icon"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -26,16 +35,16 @@
                 <ion-button
                   (click)="followOrUnfollow()"
                   shape="round"
-                  id="follow-button"
+                  class="round-button"
                 >
                   <span id="button-text"
-                    >{{ isFollowing ? '- unfollow' : '+ follow' }}</span
+                    >{{ isFollowing ? 'unfollow' : 'follow' }}</span
                   >
                 </ion-button>
                 <ion-button
                   (click)="copyCurrentUrl()"
                   shape="round"
-                  id="share-button"
+                  class="round-button"
                 >
                   <ion-icon
                     src="../../../assets/icons/ic-share.svg"
@@ -44,7 +53,7 @@
                   <span id="button-text-share">share</span>
                 </ion-button>
               </ion-row>
-              <ion-row class="ion-padding">
+              <ion-row class="margin-left">
                 <a *ngIf="instagram" href="{{instagram}}" target="_blank">
                   <ion-icon
                     class="icon"
