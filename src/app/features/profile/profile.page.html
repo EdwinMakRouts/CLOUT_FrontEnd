@@ -58,7 +58,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <p class="text">my outfits</p>
+          <p class="text">Mis outfits</p>
           <ion-row *ngIf="outfits">
             <div class="horizontal-scroll">
               <ion-col
@@ -75,8 +75,8 @@
               </ion-col>
             </div>
           </ion-row>
-          <ion-row *ngIf="!outfits">
-            <h2 class="post-description">No ha publicado ningun outfit</h2>
+          <ion-row *ngIf="!outfits || outfits.length == 0">
+            <h2 class="no-posts">No ha publicado ningun outfit</h2>
           </ion-row>
         </ion-col>
       </ion-row>

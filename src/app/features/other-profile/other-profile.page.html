@@ -83,7 +83,7 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <p class="text">outfits</p>
+              <p class="text">Mis outfits</p>
               <ion-row *ngIf="outfits">
                 <div class="horizontal-scroll">
                   <ion-col
@@ -100,18 +100,10 @@
                   </ion-col>
                 </div>
               </ion-row>
-              <ion-row *ngIf="!outfits">
-                <div class="horizontal-scroll">
-                  <ion-col *ngFor="let outfit of outfits">
-                    <img
-                      src="{{outfit.image}}"
-                      alt="Post image"
-                      onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
-                      class="post-avatar"
-                    />
-                    <h2 class="post-description">{{outfit.text}}</h2>
-                  </ion-col>
-                </div>
+              <ion-row *ngIf="outfits.length == 0">
+                <h2 class="no-posts">
+                  Este usuario no ha publicado ningun outfit
+                </h2>
               </ion-row>
             </ion-col>
           </ion-row>

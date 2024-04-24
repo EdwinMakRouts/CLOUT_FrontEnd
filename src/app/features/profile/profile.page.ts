@@ -64,7 +64,7 @@ export class ProfilePage {
     this.instagram = user.profile.instagram;
     this.twitter = user.profile.twitter;
     this.pinterest = user.profile.pinterest;
-    this.getPosts(this.id);
+    //this.getPosts(this.id);
 
     //Hacer llamada para obtener todoso los posts
   }
