@@ -271,7 +271,10 @@ export class ProfileSettingsPage implements OnInit {
       'edit-bio'
     ) as HTMLIonIconElement;
 
-    if (bioInput) console.log('existe:', bioInput.readonly);
+    if (bioInput.readonly == false && bioInput.value?.length == 0) {
+      this.toastService.presentToast('La biografía no puede estar vacía');
+      return;
+    }
 
     if (bioInput.readonly !== undefined)
       if (bioInput.readonly) {
@@ -454,7 +457,6 @@ export class ProfileSettingsPage implements OnInit {
     height?: number | null,
     weight?: number | null
   ) {
-    console.log('entra en apiEditProfile');
     return this.userService
       .updateUserProfile(
         id,
@@ -480,7 +482,6 @@ export class ProfileSettingsPage implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log('response', response);
         if (response.error)
           this.toastService.presentToast(response.error.message);
         else {

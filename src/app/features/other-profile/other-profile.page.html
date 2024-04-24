@@ -30,7 +30,7 @@
           <ion-row>
             <ion-col>
               <h2 class="user-name">@{{username}}</h2>
-              <h2 class="user-bio">{{bio}}</h2>
+              <h2 class="user-bio" *ngIf="bio">{{bio}}</h2>
               <ion-row>
                 <ion-button
                   (click)="followOrUnfollow()"

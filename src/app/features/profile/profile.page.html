@@ -17,7 +17,7 @@
       <ion-row>
         <ion-col>
           <h2 class="user-name">@{{username}}</h2>
-          <h2 class="user-bio" id="bio">{{bio}}</h2>
+          <h2 class="user-bio" id="bio" *ngIf="bio">{{bio}}</h2>
           <ion-row class="margin-left">
             <a *ngIf="instagram" href="{{instagram}}" target="_blank">
               <ion-icon
