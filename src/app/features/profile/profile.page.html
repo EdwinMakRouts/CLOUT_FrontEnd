@@ -61,7 +61,10 @@
           <p class="text">my outfits</p>
           <ion-row *ngIf="outfits">
             <div class="horizontal-scroll">
-              <ion-col *ngFor="let outfit of outfits">
+              <ion-col
+                *ngFor="let outfit of outfits"
+                (click)="goToOutfit(outfit.id)"
+              >
                 <img
                   src="{{outfit.image}}"
                   alt="Post image"

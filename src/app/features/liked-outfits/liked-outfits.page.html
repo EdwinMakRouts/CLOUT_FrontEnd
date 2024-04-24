@@ -14,17 +14,21 @@
 <ion-content>
   <div *ngIf="!loading;else loadingTemplate">
     <div *ngIf="arrayOfArrays; else noPost">
-      <h3>liked outfits</h3>
+      <h3>Outfits que me gustan</h3>
       <ion-grid>
         <div *ngFor="let posts of arrayOfArrays" class="post-container">
-          <div *ngFor="let post of posts" class="post-wrapper">
+          <div
+            *ngFor="let post of posts"
+            class="post-wrapper"
+            (click)="goToOutfit(post.id)"
+          >
             <img
               [src]="post.image"
               alt="Avatar"
               onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
               class="post-image"
             />
-            <ion-label>{{post.username}}</ion-label>
+            <ion-label>De: @{{post.user.username}}</ion-label>
           </div>
         </div></ion-grid
       >

@@ -18,7 +18,10 @@
       <ion-row>
         <ion-list lines="none">
           <ion-item *ngFor="let user of followingList">
-            <ion-row (click)="goToProfileFollowing(user.username)">
+            <ion-row
+              (click)="goToProfileFollowing(user.username)"
+              class="center-row"
+            >
               <ion-avatar>
                 <img
                   src="{{user.avatar}}"
@@ -28,7 +31,7 @@
                   id="avatar"
                 />
               </ion-avatar>
-              <ion-label class="username">{{ user.username }} </ion-label>
+              <ion-label class="username">@{{ user.username }} </ion-label>
             </ion-row>
             <ion-button
               fill="clear"

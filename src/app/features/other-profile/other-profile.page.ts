@@ -169,4 +169,8 @@ export class OtherProfilePage implements OnInit {
     document.body.removeChild(tempInput);
     this.toastService.presentToast('URL copiada al portapapeles');
   }
+
+  goToOutfit(id: number) {
+    this.navCtrl.navigateForward(['post', id]);
+  }
 }

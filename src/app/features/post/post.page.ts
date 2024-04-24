@@ -77,6 +77,10 @@ export class PostPage implements OnInit {
     this.router.navigate(['/']);
   }
 
+  goBack() {
+    this.navCtrl.back();
+  }
+
   copyUrlToPost() {
     navigator.clipboard.writeText(
       `https://clout-pin.web.app/post/${this.post.id}`

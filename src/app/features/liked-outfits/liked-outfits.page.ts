@@ -40,6 +40,8 @@ export class LikedOutfitsPage implements OnInit {
           this.loading = false;
           return;
         }
+
+        console.log(response);
         this.likedPosts = response;
         this.likedPosts.forEach((post: PostLiked, index: number) => {
           if (index % 3 == 0) {
@@ -54,5 +56,9 @@ export class LikedOutfitsPage implements OnInit {
 
   goToProfile() {
     this.navCtrl.navigateBack(['profile', 'settings']);
+  }
+
+  goToOutfit(id: number) {
+    this.navCtrl.navigateForward(['post', id]);
   }
 }

@@ -87,4 +87,8 @@ export class ProfilePage {
         }
       });
   }
+
+  goToOutfit(id: number) {
+    this.navCtrl.navigateForward(['post', id]);
+  }
 }
