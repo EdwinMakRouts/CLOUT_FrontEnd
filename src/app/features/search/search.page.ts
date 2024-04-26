@@ -49,10 +49,16 @@ export class SearchPage implements OnInit {
 
   async searchUser(event: any) {
     const user = this.userSignal();
-    const query = event.target.value;
+    let query = String(event.target.value);
     console.log(query);
+    console.log(query.length);
 
-    if (query && query.length > 0) {
+    if (query.length > 0) {
+      if (query == '@') return;
+      if (query.startsWith('@')) {
+        query = query.substring(1);
+      }
+
       // Hacer la llamada
       this.userService
         .matchUsernames(query)
