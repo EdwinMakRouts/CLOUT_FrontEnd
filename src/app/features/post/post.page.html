@@ -35,11 +35,7 @@
         </ion-row>
         <!-- <img src="{{post.image}}" class="post-image" /> -->
         <ion-row class="info">
-          <div>
-            <h2 class="biografia">{{post.text}}</h2>
-            <h2 class="fecha-creacion"></h2>
-          </div>
-          <div>
+          <div class="flex-end">
             <ion-icon
               *ngIf="!isLiked"
               src="../../../assets/icons/ic-heart-filled.svg"
@@ -64,7 +60,9 @@
           </div>
         </ion-row>
         <ion-row>
-          <h2 class="tags"></h2>
+          <div class="info-desc">
+            <p class="biografia">{{post.text}}</p>
+          </div>
         </ion-row>
       </ion-col>
     </ion-grid>
