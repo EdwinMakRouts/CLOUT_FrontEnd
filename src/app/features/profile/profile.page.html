@@ -59,7 +59,7 @@
       <ion-row>
         <ion-col>
           <p class="text">Mis outfits</p>
-          <ion-row *ngIf="outfits">
+          <ion-row *ngIf="outfits || outfits.length != 0">
             <div class="horizontal-scroll">
               <ion-col
                 *ngFor="let outfit of outfits"

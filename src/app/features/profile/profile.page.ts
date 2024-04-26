@@ -43,8 +43,6 @@ export class ProfilePage {
   }
 
   ionViewWillEnter() {
-    console.warn('');
-    console.log(this.userSignal());
     this.populateProfile();
     this.cdr.detectChanges();
   }
@@ -64,9 +62,7 @@ export class ProfilePage {
     this.instagram = user.profile.instagram;
     this.twitter = user.profile.twitter;
     this.pinterest = user.profile.pinterest;
-    //this.getPosts(this.id);
-
-    //Hacer llamada para obtener todoso los posts
+    this.getPosts(this.id);
   }
 
   getPosts(id: number) {
@@ -78,12 +74,10 @@ export class ProfilePage {
         })
       )
       .subscribe((response: any) => {
-        console.log('response', response);
         if (response.error)
           this.toastService.presentToast(response.error.message);
         else {
           this.outfits = response;
-          console.log(response);
         }
       });
   }
