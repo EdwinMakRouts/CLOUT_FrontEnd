@@ -98,19 +98,15 @@
             <ion-col>
               <p class="text">Mis outfits</p>
               <ion-row *ngIf="outfits">
-                <div class="horizontal-scroll">
-                  <ion-col
-                    *ngFor="let outfit of outfits"
+                <div class="outfits-organizer">
+                  <img
+                    src="{{outfit.image}}"
+                    alt="Post image"
+                    onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
+                    class="post-avatar"
                     (click)="goToOutfit(outfit.id)"
-                  >
-                    <img
-                      src="{{outfit.image}}"
-                      alt="Post image"
-                      onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
-                      class="post-avatar"
-                    />
-                    <h2 class="post-description">{{outfit.text}}</h2>
-                  </ion-col>
+                    *ngFor="let outfit of outfits"
+                  />
                 </div>
               </ion-row>
               <ion-row *ngIf="outfits.length == 0">

@@ -124,12 +124,20 @@ img {
   white-space: nowrap;
 }
 
+.outfits-organizer {
+  margin: 0 10px 0 34px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .post-avatar {
   width: 111px;
   height: 149px;
   flex-shrink: 0;
   margin-top: 12px;
-  margin-left: 34px;
+  margin-right: 12px;
   border-radius: 22px;
   border: 1px solid #fff;
 }
