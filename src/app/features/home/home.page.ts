@@ -63,6 +63,8 @@ export class HomePage implements OnInit {
   }
 
   async post() {
+    this.comprimirImagen();
+
     const imgToSend = this.img.replace('data:image/jpeg;base64,', '');
     this.postService
       .post(this.description, imgToSend, this.userSignal().id)
@@ -129,6 +131,18 @@ export class HomePage implements OnInit {
         'Parece que ha habido un problema al seleccionar la foto'
       );
     }
+  }
+
+  comprimirImagen() {
+    const img = new Image();
+    img.src = this.img;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx?.drawImage(img, 0, 0, img.width, img.height);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.5);
+    this.img = dataUrl;
   }
 
   cancel() {

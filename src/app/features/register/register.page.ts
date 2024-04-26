@@ -106,6 +106,8 @@ export class RegisterPage implements OnInit {
   }
 
   onRegister() {
+    if (this.img && this.img !== '') this.comprimirImagen();
+
     this.userService
       .register(
         this.registerForm.value.username,
@@ -163,5 +165,17 @@ export class RegisterPage implements OnInit {
         'Parece que ha habido un problema al seleccionar la foto'
       );
     }
+  }
+
+  comprimirImagen() {
+    const img = new Image();
+    img.src = this.img;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx?.drawImage(img, 0, 0, img.width, img.height);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.5);
+    this.img = dataUrl;
   }
 }
