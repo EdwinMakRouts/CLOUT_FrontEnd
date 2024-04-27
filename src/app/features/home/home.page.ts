@@ -235,4 +235,9 @@ export class HomePage implements OnInit {
       'La funcionalidad de los comentarios no está disponible aún'
     );
   }
+
+  closeSesion() {
+    localStorage.removeItem('userId');
+    this.router.navigate(['/welcome']);
+  }
 }
