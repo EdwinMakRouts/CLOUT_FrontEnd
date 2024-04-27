@@ -7,6 +7,7 @@ import { SignalsService } from 'src/app/core/services/signals/signals.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { NavController } from '@ionic/angular';
 import { EncryptionService } from 'src/app/shared/utils/encryption.service';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-post',
@@ -21,8 +22,8 @@ export class PostPage implements OnInit {
   uploadDate!: string;
   description!: string;
   isLiked: boolean = false;
+  userSignal: WritableSignal<User>;
 
-  userSignal: WritableSignal<any>;
   constructor(
     private router: Router,
     private postService: PostService,
@@ -149,6 +150,18 @@ export class PostPage implements OnInit {
   }
 
   goToProfile() {
-    this.navCtrl.navigateForward(['profile', 'name', this.post.user.username]);
+    console.log(this.post.user.username);
+    console.log(this.userSignal().username);
+    console.log(this.post.user.username == this.userSignal().username);
+
+    if (this.post.user.username == this.userSignal().username) {
+      this.navCtrl.navigateForward('/profile');
+    } else {
+      this.navCtrl.navigateForward([
+        'profile',
+        'name',
+        this.post.user.username,
+      ]);
+    }
   }
 }

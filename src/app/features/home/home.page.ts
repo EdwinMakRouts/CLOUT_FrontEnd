@@ -169,7 +169,11 @@ export class HomePage implements OnInit {
   }
 
   goToProfile(username: string) {
-    this.navCtrl.navigateForward(`/profile/name/${username}`);
+    if (username === this.userSignal().username) {
+      this.navCtrl.navigateForward('/profile');
+    } else {
+      this.navCtrl.navigateForward(`/profile/name/${username}`);
+    }
   }
 
   goToPost(postId: number) {
