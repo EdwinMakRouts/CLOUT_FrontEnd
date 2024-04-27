@@ -93,9 +93,7 @@ export class PostPage implements OnInit {
     //this.isLiked = !this.isLiked;
     // this.isLiked = !this.isLiked;
     // this.post.likes += this.isLiked ? 1 : -1;
-    console.log(this.post);
     const postId = this.route.snapshot.paramMap.get('id');
-    console.log('this.userSignal()', this.userSignal());
     const userId = this.encryptionService.decryptId(
       localStorage.getItem('userId')!
     );
@@ -150,10 +148,6 @@ export class PostPage implements OnInit {
   }
 
   goToProfile() {
-    console.log(this.post.user.username);
-    console.log(this.userSignal().username);
-    console.log(this.post.user.username == this.userSignal().username);
-
     if (this.post.user.username == this.userSignal().username) {
       this.navCtrl.navigateForward('/profile');
     } else {
