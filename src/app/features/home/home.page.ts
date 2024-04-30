@@ -244,4 +244,10 @@ export class HomePage implements OnInit {
     localStorage.removeItem('userId');
     this.router.navigate(['/welcome']);
   }
+
+  copyUrlToPost(postId: number) {
+    const url = `${window.location.origin}/post/${postId}`;
+    navigator.clipboard.writeText(url);
+    this.toastService.presentToast('URL copiada al portapapeles');
+  }
 }

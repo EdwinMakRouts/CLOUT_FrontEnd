@@ -28,7 +28,6 @@ export class PostPage implements OnInit {
   pressedComment = false;
   commentText: string = '';
   userSignal: WritableSignal<User>;
-  id = 0;
 
   constructor(
     private router: Router,

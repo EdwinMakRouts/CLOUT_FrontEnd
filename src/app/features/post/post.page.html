@@ -54,6 +54,7 @@
               (click)="toggleComments()"
             ></ion-icon>
             <ion-icon
+              src="../../../assets/icons/ic-share2.svg"
               name="share-social-outline"
               id="share-icon"
               (click)="copyUrlToPost()"
@@ -108,12 +109,15 @@
                 placeholder="Escribe un comentario"
                 class="input-comment"
                 maxlength="255"
+                min-length="1"
                 [(ngModel)]="commentText"
               ></ion-input>
             </div>
           </ion-item>
           <div class="send-holder" (click)="createComment()">
-            <ion-button class="send-comment">Enviar</ion-button>
+            <ion-button class="send-comment" [disabled]="commentText === ''"
+              >Enviar</ion-button
+            >
           </div>
         </ion-row>
       </div>
