@@ -102,4 +102,36 @@ export class PostRepository extends Repository {
   getLikedPosts(userId: number) {
     return this.doRequest<Post[]>('post', `/post/${userId}/likes`);
   }
+
+  /**
+   *  This method is used to get the comments of a post
+   * @param postId Id of the post that we want to get the comments
+   * @returns
+   */
+  getComments(postId: number) {
+    return this.doRequest<Comment[]>('post', `/post/${postId}/comments`);
+  }
+
+  /**
+   *  This method is used to post a comment
+   * @param postId Id of the post that we want to comment
+   * @param text Text of the comment
+   * @param userId Id of the user that commented
+   * @returns
+   */
+  createComment(postId: number, userId: number, text: string) {
+    return this.doRequest<Comment[]>('post', `/post/${postId}/comment`, {
+      text: text,
+      userId: userId,
+    });
+  }
+
+  /**
+   *  This method is used to delete a comment
+   * @param commentId Id of the comment that we want to delete
+   * @returns
+   */
+  deleteComment(commentId: number) {
+    return this.doRequest<Comment[]>('delete', `/post/${commentId}/uncomment`);
+  }
 }

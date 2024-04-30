@@ -64,16 +64,6 @@
     </ion-row>
   </div>
 
-  <div class="post-tags">
-    <ion-row>
-      <ion-col>
-        <ion-badge *ngFor="let etiqueta of post.etiquetas">{{
-          etiqueta
-        }}</ion-badge>
-      </ion-col>
-    </ion-row>
-  </div>
-
   <div class="post-stats">
     <strong>{{ post.likes }} likes</strong>
   </div>
@@ -84,12 +74,8 @@
       {{ post.text }}
     </div>
 
-    <div
-      class="comment-expander text-muted"
-      (click)="setOpen(true)"
-      *ngIf="post.comments.length; else noComments"
-    >
-      Ver los {{ post.comments.length }} comentarios
+    <div class="comment-expander text-muted" (click)="setOpen(true)">
+      Ver los comentarios
     </div>
 
     <ng-template #noComments>
@@ -98,7 +84,7 @@
       </div></ng-template
     >
 
-    <div *ngIf="post.comments.length != 0" class="comment-item">
+    <div class="comment-item">
       <span class="username">FIRST COMMENT USER</span>
       FIRST COMMENT
 

@@ -6,8 +6,6 @@ export interface Post {
   image: string;
   likes: number;
   username: string;
-  comments?: any;
-  etiquetas: string[];
 }
 
 export interface PostCreated {
@@ -34,6 +32,14 @@ export interface PostLiked {
   image: string;
   likes: number;
   user: User;
-  comments?: any[];
   hasLiked: boolean;
+}
+
+export interface Comments {
+  id: number;
+  username: string;
+  avatar: string;
+  text: String;
+  createdAt: Date;
+  updatedAt: Date;
 }

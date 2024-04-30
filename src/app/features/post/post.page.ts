@@ -5,9 +5,10 @@ import { PostService } from 'src/app/core/services/post/post.service';
 import { ToastService } from 'src/app/shared/utils/toast.service';
 import { SignalsService } from 'src/app/core/services/signals/signals.service';
 import { UserService } from 'src/app/core/services/user/user.service';
-import { NavController } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 import { EncryptionService } from 'src/app/shared/utils/encryption.service';
 import { User } from 'src/app/core/models/user';
+import { Comments } from 'src/app/core/models/post';
 
 @Component({
   selector: 'app-post',
@@ -22,7 +23,12 @@ export class PostPage implements OnInit {
   uploadDate!: string;
   description!: string;
   isLiked: boolean = false;
+
+  comments: Comments[] = [];
+  pressedComment = false;
+  commentText: string = '';
   userSignal: WritableSignal<User>;
+  id = 0;
 
   constructor(
     private router: Router,
@@ -34,8 +40,8 @@ export class PostPage implements OnInit {
     private encryptionService: EncryptionService
   ) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
-    this.getPost();
     this.userSignal = this.signalsService.getUserSignal();
+    this.getPost();
   }
 
   ngOnInit() {}
@@ -137,14 +143,68 @@ export class PostPage implements OnInit {
           console.log('aqui');
           if (response.error) {
             this.toastService.presentToast(response.error.message);
-            this.loading = false;
             return;
           }
           this.isLiked = false;
           console.warn(this.post);
-          this.loading = false;
         });
     }
+  }
+
+  toggleComments() {
+    this.pressedComment = !this.pressedComment;
+    const opacityElement = document.getElementById('opacity');
+
+    if (this.pressedComment && opacityElement) {
+      this.getComments();
+      opacityElement.style.opacity = '0.5';
+    } else if (!this.pressedComment && opacityElement) {
+      opacityElement.style.opacity = '1';
+    }
+  }
+
+  getComments() {
+    const postId = this.post.id;
+    this.postService
+      .getComments(postId)
+      .pipe(
+        catchError((error) => {
+          return of(error);
+        })
+      )
+      .subscribe((response) => {
+        if (response.error) {
+          this.toastService.presentToast(response.error.message);
+          return;
+        }
+        this.comments = response;
+        console.log(this.comments);
+      });
+  }
+
+  async createComment() {
+    const id = this.userSignal().id;
+
+    if (this.commentText.length === 0) {
+      return;
+    }
+
+    this.postService
+      .createComment(this.post.id, id, this.commentText)
+      .pipe(
+        catchError((error) => {
+          return of(error);
+        })
+      )
+      .subscribe((response) => {
+        if (response.error) {
+          this.toastService.presentToast(response.error.message);
+          return;
+        }
+
+        this.commentText = '';
+        this.getComments();
+      });
   }
 
   goToProfile() {

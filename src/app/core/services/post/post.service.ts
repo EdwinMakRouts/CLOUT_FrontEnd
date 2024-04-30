@@ -87,4 +87,16 @@ export class PostService {
   public getLikedPosts(userId: number) {
     return this.repo.getLikedPosts(userId);
   }
+
+  public getComments(postId: number) {
+    return this.repo.getComments(postId);
+  }
+
+  public createComment(postId: number, userId: number, text: string) {
+    return this.repo.createComment(postId, userId, text);
+  }
+
+  public deleteComment(commentId: number) {
+    return this.repo.deleteComment(commentId);
+  }
 }

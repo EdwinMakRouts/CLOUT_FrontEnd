@@ -87,6 +87,124 @@ ion-icon {
   object-fit: cover;
 }
 
+.mobile-container {
+  position: absolute;
+  background-color: #000000;
+  border-top-left-radius: 54px;
+  border-top-right-radius: 54px;
+  border-top: 2.5px solid #808080;
+  border-left: 2.5px solid #808080;
+  border-right: 2.5px solid #808080;
+  width: 95%;
+  height: 440px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobile-sound {
+  position: absolute;
+  border: 1.5px solid #808080;
+  width: 10%;
+  left: 0;
+  right: 0;
+  top: 7.5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobile-chat {
+  position: absolute;
+  width: 95%;
+  height: 370px;
+  left: 0;
+  right: 0;
+  top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000;
+}
+
+.chat-content {
+  height: 275px;
+  --background: #000;
+}
+
+.comentario {
+  --background: rgb(29, 29, 29);
+}
+
+ion-list ion-col {
+  width: 250px;
+}
+
+.user-avatar-comment {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #fff;
+  margin-right: 20px;
+  margin-top: 25px;
+}
+
+.comment-input {
+  --background: #1d1d1d;
+  background: #1d1d1d;
+  background-color: #1d1d1d;
+  margin-top: 2px;
+  border-top: 1px solid #fff;
+}
+
+.input-holder {
+  margin-top: 11px;
+  height: 80px;
+  width: 300px;
+  --background: rgb(29, 29, 29);
+  --background-color: rgb(29, 29, 29);
+}
+
+.input-comment-holder {
+  margin: 1px 0px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 0px 5px;
+}
+
+.input-comment {
+  --background: rgb(29, 29, 29);
+  --background-color: rgb(29, 29, 29);
+  --color: #fff;
+  height: 60px;
+  color: var(--color);
+  border-radius: var(--border-radius);
+  border: var(--border);
+  margin-top: 2px;
+  --padding: 10px;
+}
+
+.send-holder {
+  margin-top: 12px;
+}
+
+.send-comment {
+  --background: #1d1d1d;
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  border: 3px solid #fff;
+  margin-top: 2px;
+  color: #fff;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
 #comment-icon {
   width: 25px;
   height: 25px;

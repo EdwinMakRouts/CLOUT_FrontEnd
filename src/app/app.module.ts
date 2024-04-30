@@ -12,7 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      scrollAssist: false,
+    }),
     AppRoutingModule,
     HttpClientModule,
   ],

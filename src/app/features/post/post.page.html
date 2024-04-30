@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="!loading;else loadingTemplate">
+  <div *ngIf="!loading;else loadingTemplate" id="opacity">
     <ion-grid *ngIf="post; else noPost">
       <ion-col>
         <ion-row (click)="goToProfile()">
@@ -51,6 +51,7 @@
             <ion-icon
               src="../../../assets/icons/ic-comments.svg"
               id="comment-icon"
+              (click)="toggleComments()"
             ></ion-icon>
             <ion-icon
               name="share-social-outline"
@@ -78,4 +79,44 @@
       <ion-spinner></ion-spinner>
     </div>
   </ng-template>
+
+  <ion-grid *ngIf="pressedComment && comments.length > 0" class="mobile">
+    <div class="mobile-container">
+      <div class="mobile-close" (click)="toggleComments()">
+        <ion-icon src="../../../assets/icons/ic-close.svg" id="close-icon">
+        </ion-icon>
+      </div>
+      <div class="mobile-sound"></div>
+      <div class="mobile-chat">
+        <ion-content [scrollEvents]="true" class="chat-content">
+          <ion-list>
+            <ion-item *ngFor="let comment of comments" class="comentario">
+              <ion-row>
+                <img src="{{comment.avatar}}" class="user-avatar-comment" />
+                <ion-col>
+                  <p>@{{comment.username}}</p>
+                  <p>{{comment.text}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+        <ion-row class="comment-input">
+          <ion-item class="input-holder">
+            <div class="input-comment-holder">
+              <ion-input
+                placeholder="Escribe un comentario"
+                class="input-comment"
+                maxlength="255"
+                [(ngModel)]="commentText"
+              ></ion-input>
+            </div>
+          </ion-item>
+          <div class="send-holder" (click)="createComment()">
+            <ion-button class="send-comment">Enviar</ion-button>
+          </div>
+        </ion-row>
+      </div>
+    </div>
+  </ion-grid>
 </ion-content>
