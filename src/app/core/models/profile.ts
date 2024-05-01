@@ -9,8 +9,8 @@ export interface Profile {
   twitter?: string;
   pinterest?: string;
   avatar?: string;
-  height: number;
-  weight: number;
+  height?: number;
+  weight?: number;
   bornDate: Date;
   age: number;
   createdAt: string;

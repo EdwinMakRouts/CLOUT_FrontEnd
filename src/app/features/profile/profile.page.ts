@@ -24,6 +24,8 @@ export class ProfilePage {
   twitter!: string;
   pinterest!: string;
   isFollowing: boolean = false;
+  height!: number;
+  weight!: number;
 
   outfits: any = [];
 
@@ -62,6 +64,8 @@ export class ProfilePage {
     this.instagram = user.profile.instagram;
     this.twitter = user.profile.twitter;
     this.pinterest = user.profile.pinterest;
+    this.height = user.profile.height;
+    this.weight = user.profile.weight;
     this.getPosts(this.id);
   }
 

@@ -92,7 +92,7 @@ img {
 .text {
   width: 85px;
   height: 18px;
-  margin-top: 44px;
+  margin-top: 20px;
   margin-left: 41px;
   flex-shrink: 0;
   color: #fff;
@@ -252,4 +252,13 @@ img {
   height: 18px;
   width: 18px;
   flex-shrink: 0;
+}
+
+hr {
+  background: #c1c1c1;
+  width: 200px;
+}
+
+.centrar-peso-altura {
+  justify-content: center;
 }

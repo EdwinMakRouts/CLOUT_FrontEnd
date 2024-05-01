@@ -25,6 +25,8 @@ export class OtherProfilePage implements OnInit {
   userFound: boolean = false;
   loading: boolean = true;
   isFollowing = false;
+  height!: number;
+  weight!: number;
 
   outfits: any = [];
   userSignal: WritableSignal<any>;
@@ -73,6 +75,8 @@ export class OtherProfilePage implements OnInit {
         this.twitter = res.profile.twitter;
         this.pinterest = res.profile.pinterest;
         this.bio = res.profile.description;
+        this.height = res.profile.height;
+        this.weight = res.profile.weight;
         const timestamp = new Date().getTime();
         this.avatar = res.profile.avatar;
         this.avatar += `?nocache=${timestamp}`;
