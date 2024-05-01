@@ -43,7 +43,9 @@ export class PostPage implements OnInit {
     this.getPost();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userSignal = this.signalsService.getUserSignal();
+  }
 
   getPost() {
     if (this.state) {

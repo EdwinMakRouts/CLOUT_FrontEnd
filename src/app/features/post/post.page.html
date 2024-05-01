@@ -81,7 +81,7 @@
     </div>
   </ng-template>
 
-  <ion-grid *ngIf="pressedComment && comments.length > 0" class="mobile">
+  <ion-grid *ngIf="pressedComment" class="mobile">
     <div class="mobile-container">
       <div class="mobile-close" (click)="toggleComments()">
         <ion-icon src="../../../assets/icons/ic-close.svg" id="close-icon">
