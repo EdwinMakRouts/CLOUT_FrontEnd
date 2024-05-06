@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Repository } from '../../base/repository.repository';
-import { User } from '../../models/user';
+import { BasicUser, User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +59,10 @@ export class UserRepository extends Repository {
       email: email,
       password: password,
     });
+  }
+
+  getUserBasicData(id: number) {
+    return this.doRequest<BasicUser>('get', `/users/${id}`);
   }
 
   /**
@@ -169,5 +173,9 @@ export class UserRepository extends Repository {
 
   matchUsernames(username: string) {
     return this.doRequest<User[]>('get', `/users/${username}/match`);
+  }
+
+  deleteUser(id: number) {
+    return this.doRequest<User>('delete', `/users/${id}`);
   }
 }

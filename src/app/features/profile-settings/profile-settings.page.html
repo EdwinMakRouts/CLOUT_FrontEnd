@@ -109,6 +109,76 @@
               (click)="editBio()"
             ></ion-icon>
           </ion-row>
+
+          <ion-label class="prompt" id="prompt-password">
+            Contraseña
+          </ion-label>
+          <ion-row>
+            <input
+              class="information"
+              id="password"
+              value="{{password}}"
+              maxlength="30"
+              readonly
+            />
+            <ion-icon
+              src="../../../assets/icons/ic-edit-white.svg"
+              class="edit-icon"
+              id="edit-password"
+              (click)="editPassword()"
+            ></ion-icon>
+          </ion-row>
+
+          <ion-label class="prompt"> Email </ion-label>
+          <ion-row>
+            <input
+              class="information"
+              id="email"
+              value="{{email}}"
+              maxlength="100"
+              readonly
+            />
+            <ion-icon
+              src="../../../assets/icons/ic-edit-white.svg"
+              class="edit-icon"
+              id="edit-email"
+              (click)="editEmail()"
+            ></ion-icon>
+          </ion-row>
+
+          <ion-label class="prompt"> Altura </ion-label>
+          <ion-row>
+            <input
+              class="information"
+              id="altura"
+              value="{{altura}}"
+              maxlength="3"
+              readonly
+            />
+            <ion-icon
+              src="../../../assets/icons/ic-edit-white.svg"
+              class="edit-icon"
+              id="edit-altura"
+              (click)="editAltura()"
+            ></ion-icon>
+          </ion-row>
+
+          <ion-label class="prompt"> Peso </ion-label>
+          <ion-row>
+            <input
+              class="information"
+              id="peso"
+              value="{{peso}}"
+              maxlength="3"
+              readonly
+            />
+            <ion-icon
+              src="../../../assets/icons/ic-edit-white.svg"
+              class="edit-icon"
+              id="edit-peso"
+              (click)="editPeso()"
+            ></ion-icon>
+          </ion-row>
         </ion-col>
       </ion-row>
 
@@ -123,6 +193,32 @@
             >
             </ion-icon>
             <label class="text">Mis me gusta</label>
+            <ion-row class="arrow-holder">
+              <ion-icon
+                src="../../../assets/icons/ic-arrow.svg"
+                id="liked-outfits-arrow"
+              >
+              </ion-icon>
+            </ion-row>
+          </ion-row>
+
+          <ion-row class="margin-top" (click)="goToFollowing()">
+            <ion-icon src="../../../assets/icons/ic-comments.svg" class="icons">
+            </ion-icon>
+            <label class="text"> Mis comentarios </label>
+            <ion-row class="arrow-holder">
+              <ion-icon
+                src="../../../assets/icons/ic-arrow.svg"
+                id="liked-outfits-arrow"
+              >
+              </ion-icon>
+            </ion-row>
+          </ion-row>
+
+          <ion-row class="margin-top" (click)="goToFollowing()">
+            <ion-icon src="../../../assets/icons/ic-card.svg" class="icons">
+            </ion-icon>
+            <label class="text"> Mis publicaciones </label>
             <ion-row class="arrow-holder">
               <ion-icon
                 src="../../../assets/icons/ic-arrow.svg"
@@ -185,7 +281,7 @@
           </ion-row>
 
           <ion-row
-            class="margin-top-bottom"
+            class="margin-top"
             id="pinterest"
             (click)="createAlert('pinterest')"
           >
@@ -204,6 +300,21 @@
             </ion-row>
           </ion-row>
         </ion-col>
+      </ion-row>
+
+      <hr />
+
+      <ion-row style="margin-left: 50px; margin-right: 50px">
+        <ion-button
+          style="
+            --background: #fd4141;
+            margin-bottom: 40px;
+            width: 100%;
+            color: #fff;
+          "
+          (click)="deleteAccount()"
+          >Borrar cuenta</ion-button
+        >
       </ion-row>
     </ion-col>
   </ion-grid>

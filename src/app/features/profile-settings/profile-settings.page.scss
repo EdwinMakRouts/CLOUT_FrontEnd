@@ -142,7 +142,7 @@ hr {
 
 #biografy {
   margin-top: 3px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   width: 85%;
   height: auto;
   --padding-top: none;
@@ -150,4 +150,25 @@ hr {
   padding: 5px;
   border-radius: 15px;
   border: 0.5px solid #868686;
+}
+
+#password {
+  width: 260px;
+}
+
+#email {
+  width: 260px;
+}
+
+#altura {
+  width: 50px;
+}
+
+#peso {
+  width: 50px;
+  margin-bottom: 0px;
+}
+
+#pinterest-holder {
+  margin-bottom: 20px;
 }

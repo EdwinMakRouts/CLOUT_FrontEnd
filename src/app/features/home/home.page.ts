@@ -13,6 +13,7 @@ import { Post } from 'src/app/core/models/post';
 import { User } from 'src/app/core/models/user';
 import { PostService } from 'src/app/core/services/post/post.service';
 import { SignalsService } from 'src/app/core/services/signals/signals.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 import { EncryptionService } from 'src/app/shared/utils/encryption.service';
 import { ToastService } from 'src/app/shared/utils/toast.service';
 
@@ -47,7 +48,8 @@ export class HomePage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private cd: ChangeDetectorRef,
-    private encryptionService: EncryptionService
+    private encryptionService: EncryptionService,
+    private userService: UserService
   ) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
     this.userSignal = this.signalsService.getUserSignal();
@@ -241,7 +243,7 @@ export class HomePage implements OnInit {
   }
 
   closeSesion() {
-    localStorage.removeItem('userId');
+    this.userService.logOut();
     this.router.navigate(['/welcome']);
   }
 

@@ -54,6 +54,10 @@ export class UserService {
     return this.repo.loginUser(email, password);
   }
 
+  public getUserBasicData(id: number) {
+    return this.repo.getUserBasicData(id);
+  }
+
   public getUserProfile(id: number) {
     return this.repo.getUserProfile(id);
   }
@@ -132,5 +136,9 @@ export class UserService {
 
   public matchUsernames(username: string) {
     return this.repo.matchUsernames(username);
+  }
+
+  public deleteUser(id: number) {
+    return this.repo.deleteUser(id);
   }
 }
