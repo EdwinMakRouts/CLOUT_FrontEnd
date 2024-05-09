@@ -31,6 +31,20 @@ const routes: Routes = [
         (m) => m.LikedOutfitsPageModule
       ),
   },
+  {
+    path: 'comments',
+    title: 'Clout - Mis comentarios',
+    loadChildren: () =>
+      import('../my-comments/my-comments.module').then(
+        (m) => m.MyCommentsPageModule
+      ),
+  },
+  {
+    path: 'posts',
+    title: 'Clout - Mis publicaciones',
+    loadChildren: () =>
+      import('../my-posts/my-posts.module').then((m) => m.MyPostsPageModule),
+  },
 ];
 
 @NgModule({

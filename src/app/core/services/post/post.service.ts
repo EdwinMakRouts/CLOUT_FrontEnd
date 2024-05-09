@@ -99,4 +99,8 @@ export class PostService {
   public deleteComment(commentId: number) {
     return this.repo.deleteComment(commentId);
   }
+
+  public deletePost(postId: number) {
+    return this.repo.deletePost(postId);
+  }
 }

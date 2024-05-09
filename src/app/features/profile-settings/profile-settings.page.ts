@@ -583,6 +583,16 @@ export class ProfileSettingsPage implements OnInit {
     this.navCtrl.navigateForward(['profile', 'following']);
   }
 
+  goToMyComments() {
+    //redirigir a la página de comentarios
+    this.navCtrl.navigateForward(['profile', 'comments']);
+  }
+
+  goToMyPosts() {
+    //redirigir a la página de publicaciones
+    this.navCtrl.navigateForward(['profile', 'posts']);
+  }
+
   setInstagramUsername(username: string) {
     //realizar la llamada a la api para actualizar el nombre de usuario de instagram
     this.instagram_username = username;
@@ -709,7 +719,4 @@ export class ProfileSettingsPage implements OnInit {
         }
       });
   }
-}
-function getBase64Image(img: string) {
-  throw new Error('Function not implemented.');
 }

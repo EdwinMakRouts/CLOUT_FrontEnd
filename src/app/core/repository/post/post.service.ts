@@ -134,4 +134,8 @@ export class PostRepository extends Repository {
   deleteComment(commentId: number) {
     return this.doRequest<Comment[]>('delete', `/post/${commentId}/uncomment`);
   }
+
+  deletePost(postId: number) {
+    return this.doRequest<Post[]>('delete', `/post/${postId}`);
+  }
 }
