@@ -583,11 +583,6 @@ export class ProfileSettingsPage implements OnInit {
     this.navCtrl.navigateForward(['profile', 'following']);
   }
 
-  goToMyComments() {
-    //redirigir a la página de comentarios
-    this.navCtrl.navigateForward(['profile', 'comments']);
-  }
-
   goToMyPosts() {
     //redirigir a la página de publicaciones
     this.navCtrl.navigateForward(['profile', 'posts']);
