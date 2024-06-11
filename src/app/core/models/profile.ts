@@ -2,9 +2,7 @@ export interface Profile {
   id: number;
   firstName: string;
   lastName: string;
-  pronouns?: string;
   description?: string;
-  isPrivate?: boolean;
   instagram?: string;
   twitter?: string;
   pinterest?: string;

@@ -94,9 +94,7 @@ export class UserRepository extends Repository {
    * @param avatar Avatar of the user
    * @param height Height of the user
    * @param weight Weight of the user
-   * @param pronouns Pronouns of the user
    * @param description Bio of the user
-   * @param isPrivate If the user is private or not
    * @param instagram Instagram username of the user
    * @param twitter Twitter username of the user
    * @param pinterest Pinterest username of the user
@@ -109,9 +107,7 @@ export class UserRepository extends Repository {
     password?: string | null,
     firstName?: string | null,
     lastName?: string | null,
-    pronouns?: string | null,
     description?: string | null,
-    isPrivate?: boolean | null,
     instagram?: string | null,
     twitter?: string | null,
     pinterest?: string | null,
@@ -126,9 +122,7 @@ export class UserRepository extends Repository {
       password: password,
       firstName: firstName,
       lastName: lastName,
-      pronouns: pronouns,
       description: description,
-      isPrivate: isPrivate,
       instagram: instagram,
       twitter: twitter,
       pinterest: pinterest,

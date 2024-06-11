@@ -17,7 +17,6 @@ export class ProfileSettingsPage implements OnInit {
   username!: string;
   name!: string;
   surname!: string;
-  pronouns!: string;
   bio!: string;
   password!: string;
   email!: string;
@@ -57,7 +56,6 @@ export class ProfileSettingsPage implements OnInit {
     this.username = user.username;
     this.name = user.profile.firstName;
     this.surname = user.profile.lastName;
-    this.pronouns = user.profile.pronouns;
     this.bio = user.profile.description;
     this.password = user.password;
     this.email = user.email;
@@ -178,8 +176,6 @@ export class ProfileSettingsPage implements OnInit {
         null,
         null,
         null,
-        null,
-        null,
         null
       );
     }
@@ -215,8 +211,6 @@ export class ProfileSettingsPage implements OnInit {
         null,
         null,
         nameInput.value,
-        null,
-        null,
         null,
         null,
         null,
@@ -268,8 +262,6 @@ export class ProfileSettingsPage implements OnInit {
         null,
         null,
         null,
-        null,
-        null,
         null
       );
     }
@@ -304,9 +296,7 @@ export class ProfileSettingsPage implements OnInit {
           null,
           null,
           null,
-          null,
           bioInput.value?.toString(),
-          null,
           null,
           null,
           null,
@@ -355,8 +345,6 @@ export class ProfileSettingsPage implements OnInit {
         null,
         null,
         null,
-        null,
-        null,
         null
       );
     }
@@ -382,8 +370,6 @@ export class ProfileSettingsPage implements OnInit {
           this.userSignal().id,
           null,
           emailInput.value,
-          null,
-          null,
           null,
           null,
           null,
@@ -434,8 +420,6 @@ export class ProfileSettingsPage implements OnInit {
         null,
         null,
         null,
-        null,
-        null,
         Number(heightdInput.value),
         null
       );
@@ -463,8 +447,6 @@ export class ProfileSettingsPage implements OnInit {
       //realizar la llamada a la api para actualizar la contraseña
       this.apiEditProfile(
         this.userSignal().id,
-        null,
-        null,
         null,
         null,
         null,
@@ -551,8 +533,6 @@ export class ProfileSettingsPage implements OnInit {
         null,
         null,
         null,
-        null,
-        null,
         this.img.replace('data:image/jpeg;base64,', ''),
         null,
         null
@@ -600,8 +580,6 @@ export class ProfileSettingsPage implements OnInit {
       null,
       null,
       null,
-      null,
-      null,
       username,
       null,
       null,
@@ -618,8 +596,6 @@ export class ProfileSettingsPage implements OnInit {
 
     this.apiEditProfile(
       this.userSignal().id,
-      null,
-      null,
       null,
       null,
       null,
@@ -650,8 +626,6 @@ export class ProfileSettingsPage implements OnInit {
       null,
       null,
       null,
-      null,
-      null,
       username,
       null,
       null,
@@ -667,9 +641,7 @@ export class ProfileSettingsPage implements OnInit {
     password?: string | null,
     firstName?: string | null,
     lastName?: string | null,
-    pronouns?: string | null,
     bio?: string | null,
-    isPrivate?: boolean | null,
     instagram_username?: string | null,
     twitter_username?: string | null,
     pinterest_username?: string | null,
@@ -686,9 +658,7 @@ export class ProfileSettingsPage implements OnInit {
         password,
         firstName,
         lastName,
-        pronouns,
         bio,
-        isPrivate,
         instagram_username,
         twitter_username,
         pinterest_username,
