@@ -27,7 +27,7 @@
     <ng-template #found>
       <ion-grid>
         <ion-col>
-          <ion-row>
+          <ion-row style="justify-content: space-between; width: 100%">
             <ion-col>
               <h2 class="user-name">@{{username}}</h2>
               <h2 class="user-bio" *ngIf="bio">{{bio}}</h2>
@@ -84,7 +84,14 @@
                 </a>
               </ion-row>
             </ion-col>
-            <ion-col>
+            <ion-col
+              style="
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+                margin-right: 30px;
+              "
+            >
               <img
                 src="{{avatar}}"
                 alt="Avatar"

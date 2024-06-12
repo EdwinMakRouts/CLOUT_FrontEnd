@@ -27,10 +27,10 @@
         </div>
       </div>
 
-      <div *ngIf="posts" class="event">
-        <div *ngFor="let post of posts" class="post-container">
-          <ion-row>
-            <div class="function-container">
+      <div *ngIf="posts">
+        <div *ngFor="let post of posts">
+          <ion-row class="content-holder">
+            <div style="margin-right: 20px">
               <ion-row>
                 <img
                   class="profile-img"
@@ -39,7 +39,7 @@
                   (click)="goToProfile(post.user.username)"
                 />
               </ion-row>
-              <ion-row>
+              <ion-row style="display: flex; justify-content: center">
                 <ion-icon
                   *ngIf="!post.hasLiked"
                   src="../../../assets/icons/ic-heart-filled.svg"
@@ -55,7 +55,7 @@
                 >
                 </ion-icon>
               </ion-row>
-              <ion-row>
+              <ion-row style="display: flex; justify-content: center">
                 <ion-icon
                   src="../../../assets/icons/ic-share3.svg"
                   id="share-icon"
@@ -65,7 +65,7 @@
               </ion-row>
             </div>
 
-            <ion-col>
+            <div>
               <ion-row>
                 <img
                   src="{{post.image}}"
@@ -82,7 +82,7 @@
                 </label>
               </ion-row>
               <ion-row> </ion-row>
-            </ion-col>
+            </div>
           </ion-row>
         </div>
       </div>

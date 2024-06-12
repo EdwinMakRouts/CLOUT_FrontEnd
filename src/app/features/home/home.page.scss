@@ -3,7 +3,7 @@ ion-col {
 }
 
 ion-icon {
-  margin-left: 52px;
+  //margin-left: 52px;
   margin-top: 15px;
   width: 24px;
   height: 24px;
@@ -32,9 +32,9 @@ img {
   height: 40px;
   border-radius: 40px;
   border: 1px solid #fff;
-  margin-left: 44px;
+  //margin-left: 44px;
   margin-top: 124px;
-  margin-right: 22px;
+  //margin-right: 22px;
 }
 
 .post-image {
@@ -245,4 +245,10 @@ ion-button {
 #share-icon {
   --stroke: #fff;
   -fill: #fff;
+}
+
+.content-holder {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
