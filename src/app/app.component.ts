@@ -13,8 +13,8 @@ export class AppComponent {
     private toastService: ToastService
   ) {
     this.signalsService.setUserSignal(this.userSignal);
-    this.toastService.presentToast(
-      'Actualmente, la aplicación solo esta diseñada para dispositivos móviles en modo vertical.'
-    );
+    //this.toastService.presentToast(
+    //  'Actualmente, la aplicación solo esta diseñada para dispositivos móviles en modo vertical.'
+    //);
   }
 }

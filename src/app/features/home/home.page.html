@@ -90,23 +90,32 @@
   </ion-grid>
 </ion-content>
 
-<ion-modal mode="ios" trigger="open-modal">
+<ion-modal
+  mode="ios"
+  trigger="open-modal"
+  style="--height: 99%; --max-width: 440px"
+>
   <ng-template>
     <ion-header>
       <ion-toolbar>
+        <ion-row>
+          <ion-title>Nuevo post</ion-title>
+        </ion-row>
+
         <ion-buttons slot="start">
           <ion-button (click)="cancel()">
             <ion-icon
               src="../../../assets/icons/ic-close.svg"
               id="close-icon"
+              style="margin-left: 52px"
             ></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-title>Nuevo post</ion-title>
+
         <ion-buttons slot="end">
-          <ion-button (click)="confirm()" [strong]="true" id="publish-button"
-            >Publicar</ion-button
-          >
+          <ion-button (click)="confirm()" [strong]="true" id="publish-button">
+            Publicar
+          </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
@@ -125,7 +134,7 @@
               src="../../../assets/icons/ic-add.svg"
               id="add-icon"
             ></ion-icon>
-            <span id="button-text">add outfit</span>
+            <span id="button-text">Añadir outfit</span>
           </ion-col>
         </ion-button>
       </div>
