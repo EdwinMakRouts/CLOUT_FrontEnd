@@ -28,7 +28,9 @@
       <ion-grid>
         <ion-col>
           <ion-row style="justify-content: space-between; width: 100%">
-            <ion-col>
+            <ion-col
+              style="display: flex; flex-direction: column; flex-grow: 2"
+            >
               <h2 class="user-name">@{{username}}</h2>
               <h2 class="user-bio" *ngIf="bio">{{bio}}</h2>
               <ion-row>
@@ -87,6 +89,7 @@
             <ion-col
               style="
                 display: flex;
+                flex-grow: 1;
                 width: 100%;
                 justify-content: flex-end;
                 margin-right: 30px;

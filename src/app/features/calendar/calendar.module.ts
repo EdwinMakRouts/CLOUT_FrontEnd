@@ -10,6 +10,7 @@ import { CalendarPage } from './calendar.page';
 import { NgCalendarModule } from 'ionic2-calendar';
 import localeEsES from '@angular/common/locales/es';
 import { PostComponent } from 'src/app/shared/components/post/post.component';
+import { CreateEventComponent } from '../create-event/create-event.component';
 
 registerLocaleData(localeEsES, 'es-Es');
 
@@ -22,7 +23,7 @@ registerLocaleData(localeEsES, 'es-Es');
     NgCalendarModule,
     PostComponent,
   ],
-  declarations: [CalendarPage],
+  declarations: [CalendarPage, CreateEventComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Es' }],
 })
 export class CalendarPageModule {}

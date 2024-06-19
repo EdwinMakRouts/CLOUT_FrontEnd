@@ -9,8 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { IonModal, NavController } from '@ionic/angular';
 import { catchError, of } from 'rxjs';
+import { Following } from 'src/app/core/models/following';
 import { Post } from 'src/app/core/models/post';
 import { User } from 'src/app/core/models/user';
+import { FollowingService } from 'src/app/core/services/following/following.service';
 import { PostService } from 'src/app/core/services/post/post.service';
 import { SignalsService } from 'src/app/core/services/signals/signals.service';
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -22,7 +24,7 @@ import { ToastService } from 'src/app/shared/utils/toast.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   etiquetas = [
     { value: 'comida', label: 'Verano' },
     { value: 'viaje', label: 'Invierno' },
@@ -31,6 +33,14 @@ export class HomePage implements OnInit {
 
   img!: string;
   description!: string;
+
+  eventName!: string;
+  eventDescription!: string;
+  eventLocality!: string;
+  eventFriends: number[] = [];
+
+  following: Following[] = [];
+
   state: any;
   postsArrived: boolean = false;
   userSignal: WritableSignal<User>;
@@ -49,15 +59,15 @@ export class HomePage implements OnInit {
     private route: ActivatedRoute,
     private cd: ChangeDetectorRef,
     private encryptionService: EncryptionService,
-    private userService: UserService
+    private userService: UserService,
+    private followingService: FollowingService
   ) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
     this.userSignal = this.signalsService.getUserSignal();
     console.log('user', this.userSignal);
     console.log('userSignal()', this.userSignal());
+    this.getFollowing();
   }
-
-  ngOnInit() {}
 
   ionViewDidEnter() {
     this.getPosts(this.userSignal().id);
@@ -69,7 +79,15 @@ export class HomePage implements OnInit {
 
     const imgToSend = this.img.replace('data:image/jpeg;base64,', '');
     this.postService
-      .post(this.description, imgToSend, this.userSignal().id)
+      .post(
+        this.description,
+        imgToSend,
+        this.userSignal().id,
+        this.eventName,
+        this.eventDescription,
+        this.eventLocality,
+        this.eventFriends
+      )
       .pipe(
         catchError((error) => {
           return of(error);
@@ -148,6 +166,14 @@ export class HomePage implements OnInit {
   }
 
   cancel() {
+    this.img = '';
+    this.description = '';
+
+    this.eventName = '';
+    this.eventDescription = '';
+    this.eventLocality = '';
+    this.eventFriends = [];
+
     this.modal.dismiss();
   }
 
@@ -161,8 +187,7 @@ export class HomePage implements OnInit {
       return;
     }
     await this.post();
-    this.modal.dismiss();
-    this.img = '';
+    this.cancel();
   }
 
   async refreshPage(ev: any) {
@@ -236,10 +261,33 @@ export class HomePage implements OnInit {
     }
   }
 
-  noComments() {
-    this.toastService.presentToast(
-      'La funcionalidad de los comentarios no está disponible aún'
-    );
+  selectUser(user: any) {
+    const id = user.id;
+    if (this.eventFriends.includes(id)) {
+      this.eventFriends = this.eventFriends.filter((id) => id !== user.id);
+    } else {
+      this.eventFriends.push(id);
+    }
+  }
+
+  getFollowing() {
+    this.followingService
+      .getFollowing(this.userSignal().id)
+      .pipe(
+        catchError((error) => {
+          return of(error);
+        })
+      )
+      .subscribe((response: any) => {
+        if (response.error) {
+          this.toastService.presentToast(
+            'Error al obtener los usuarios que sigues'
+          );
+        } else {
+          this.following = response;
+          console.log(this.following);
+        }
+      });
   }
 
   closeSesion() {

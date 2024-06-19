@@ -18,12 +18,32 @@ export class PostRepository extends Repository {
    * @param etiquetas Tag of the post
    * @returns Observable that tells if the post was posted or not
    */
-  post(text: string, image: string, userId: number) {
-    return this.doRequest<PostCreated>('post', `/post`, {
-      text: text,
-      image: image,
-      userId: userId,
-    });
+  post(
+    text: string,
+    image: string,
+    userId: number,
+    title?: string,
+    description?: string,
+    location?: string,
+    friendsId?: number[]
+  ) {
+    if (title && title != '') {
+      return this.doRequest<PostCreated>('post', `/post`, {
+        text: text,
+        image: image,
+        userId: userId,
+        title: title,
+        description: description,
+        location: location,
+        friendsId: friendsId,
+      });
+    } else {
+      return this.doRequest<PostCreated>('post', `/post`, {
+        text: text,
+        image: image,
+        userId: userId,
+      });
+    }
   }
 
   /**

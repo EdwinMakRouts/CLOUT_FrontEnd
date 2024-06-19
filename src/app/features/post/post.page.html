@@ -93,7 +93,11 @@
           <ion-list>
             <ion-item *ngFor="let comment of comments" class="comentario">
               <ion-row>
-                <img src="{{comment.avatar}}" class="user-avatar-comment" />
+                <img
+                  src="{{comment.avatar}}"
+                  class="user-avatar-comment"
+                  onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
+                />
                 <ion-col>
                   <p>@{{comment.username}}</p>
                   <p>{{comment.text}}</p>

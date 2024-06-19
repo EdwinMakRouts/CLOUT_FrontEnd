@@ -15,8 +15,24 @@ export class PostService {
    * @param etiquetas Tag of the post
    * @returns Observable that tells if the post was posted or not
    */
-  public post(text: string, image: string, userId: number) {
-    return this.repo.post(text, image, userId);
+  public post(
+    text: string,
+    image: string,
+    userId: number,
+    title?: string,
+    description?: string,
+    location?: string,
+    friendsId?: number[]
+  ) {
+    return this.repo.post(
+      text,
+      image,
+      userId,
+      title,
+      description,
+      location,
+      friendsId
+    );
   }
 
   /**

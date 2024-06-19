@@ -26,7 +26,7 @@ export class CalendarRepository extends Repository {
    * @returns An observable that returns all the posts created by the user in a specific date
    */
   public getCreatedPostsByDate(userId: number, date: Date) {
-    return this.doRequest<Post[]>(
+    return this.doRequest<any[]>(
       'get',
       `/calendar/${userId}/date/${date.getFullYear()}/${
         date.getMonth() + 1

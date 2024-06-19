@@ -1,55 +1,147 @@
 <ion-content class="ion-padding">
-  <ion-toolbar>
-    <ion-title id="month-name" mode="ios">{{ viewTitle }}</ion-title>
-  </ion-toolbar>
+  <div *ngIf="!showCreateEvent">
+    <ion-toolbar>
+      <ion-title id="month-name" mode="ios">{{ viewTitle }}</ion-title>
+    </ion-toolbar>
 
-  <calendar
-    [eventSource]="eventSource"
-    [calendarMode]="calendar.mode"
-    [currentDate]="calendar.currentDate"
-    (onCurrentDateChanged)="onCurrentDateChanged($event)"
-    (onEventSelected)="onEventSelected($event)"
-    (onTitleChanged)="onViewTitleChanged($event)"
-    (onTimeSelected)="onTimeSelected($event)"
-    [step]="calendar.step"
-    [noEventsLabel]="calendar.noEventsLabel"
-    [startingDayWeek]="calendar.startingDayWeek"
-    [startingDayMonth]="calendar.startingDayMonth"
-    [monthviewDisplayEventTemplate]="template"
-    [monthviewEventDetailTemplate]="events"
-  >
-  </calendar>
+    <calendar
+      [eventSource]="eventSource"
+      [calendarMode]="calendar.mode"
+      [currentDate]="calendar.currentDate"
+      (onCurrentDateChanged)="onCurrentDateChanged($event)"
+      (onEventSelected)="onEventSelected($event)"
+      (onTitleChanged)="onViewTitleChanged($event)"
+      (onTimeSelected)="onTimeSelected($event)"
+      [step]="calendar.step"
+      [noEventsLabel]="calendar.noEventsLabel"
+      [startingDayWeek]="calendar.startingDayWeek"
+      [startingDayMonth]="calendar.startingDayMonth"
+      [monthviewDisplayEventTemplate]="template"
+      [monthviewEventDetailTemplate]="events"
+    >
+    </calendar>
 
-  <ng-template #events>
-    <div class="indicator-container">
-      <div *ngIf="currentEvents.length" class="event">
-        <div *ngFor="let post of currentEvents" class="post-container">
-          <div class="post-wrapper" (click)="goToPost(post.id)">
-            <img
-              [src]="post.image"
-              alt="Post {{ post.id }} de {{ post.username }}"
-              onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
-              class="post-image"
-            />
-            <span>{{ post.text }}</span>
+    <ng-template #events>
+      <div class="indicator-container">
+        <div *ngIf="currentEvents.length" class="event">
+          <div *ngFor="let post of currentEvents" class="post-container">
+            <div class="post-wrapper">
+              <ion-card style="background: #414141; border-radius: 22px">
+                <img
+                  alt="Imagen del post"
+                  [src]="post.image"
+                  onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
+                  style="
+                    object-fit: cover;
+                    max-height: 192px;
+                    width: 100%;
+                    cursor: pointer;
+                  "
+                  (click)="goToPost(post.id)"
+                />
+                <ion-card-header
+                  style="--background: #414141"
+                  *ngIf="post.events"
+                >
+                  <ion-card-subtitle
+                    class="post-subtitle"
+                    *ngIf="post.events.description != '' && post.events.description != null"
+                  >
+                    {{ post.events.description }}
+                  </ion-card-subtitle>
+                  <ion-card-title
+                    *ngIf="post.events.title != '' && post.events.title != null"
+                    class="post-title"
+                    >{{post.events.title}}</ion-card-title
+                  >
+                </ion-card-header>
+
+                <ion-card-content>
+                  <p *ngIf="post.text != '' && post.text != null">
+                    Descripción:
+                    <span style="color: #fff">{{ post.text }}</span>
+                  </p>
+                  <p
+                    *ngIf="post.events && post.events.location != '' && post.events.location != null"
+                  >
+                    Localización:
+                    <span style="color: #fff">{{ post.events.location }}</span>
+                  </p>
+                  <div
+                    *ngIf="post.events && post.events.friendsId.length !=  0"
+                  >
+                    <p>
+                      Animgos:
+                      <img
+                        *ngFor="let friendId of post.events.friendsId"
+                        alt="Imagen del post"
+                        [src]="getAvatar(friendId)"
+                        onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
+                        style="height: 25px; width: 25px; border-radius: 50%"
+                      />
+                    </p>
+                  </div>
+                </ion-card-content>
+
+                <ion-card-content>
+                  <ion-row style="justify-content: space-between">
+                    <button
+                      style="color: #fff; background: none"
+                      *ngIf="!post.events"
+                      (click)="createEvent(post)"
+                    >
+                      CREAR EVENTO
+                    </button>
+                    <button
+                      style="color: #fff; background: none"
+                      *ngIf="post.events"
+                      (click)="createEvent(post)"
+                    >
+                      EDITAR EVENTO
+                    </button>
+                    <button
+                      style="color: #fd4141; background: none"
+                      *ngIf="post.events"
+                      (click)="deleteEvent(post.events.id)"
+                    >
+                      BORRAR EVENTO
+                    </button>
+                  </ion-row>
+                </ion-card-content>
+              </ion-card>
+            </div>
           </div>
         </div>
+        <div *ngIf="!currentEvents.length" class="event" id="no-posts">
+          {{calendar.noEventsLabel}}
+        </div>
       </div>
-      <div *ngIf="!currentEvents.length" class="event" id="no-posts">
-        {{calendar.noEventsLabel}}
-      </div>
-    </div>
-  </ng-template>
+    </ng-template>
 
-  <ng-template #template let-view="view" let-row="row" let-col="col">
-    {{view.dates[row * 7 + col].label}}
-    <div class="indicator-container">
-      <div
-        class="event-indicator"
-        *ngIf="view.dates[row * 7 + col].events.length"
-      >
-        .
+    <ng-template #template let-view="view" let-row="row" let-col="col">
+      {{view.dates[row * 7 + col].label}}
+      <div class="indicator-container">
+        <div
+          class="event-indicator"
+          *ngIf="view.dates[row * 7 + col].events.length"
+        >
+          .
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
+
+  <app-create-event
+    *ngIf="showCreateEvent"
+    style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+    "
+    [data]="event"
+    (notifyParent)="onNotify($event)"
+  ></app-create-event>
 </ion-content>

@@ -1,0 +1,139 @@
+<div
+  style="--height: 99%; --max-width: 440px; margin-bottom: 25px; padding: 20px"
+>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="cancel()">
+          <ion-icon
+            src="../../../assets/icons/ic-close.svg"
+            id="close-icon"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button
+          (click)="confirm()"
+          [strong]="true"
+          id="publish-button"
+          [disabled]="!eventName"
+        >
+          {{ thereIsEvent ? "Editar" : "Crear" }}
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-row>
+    <ion-title style="text-align: center">Evento</ion-title>
+  </ion-row>
+
+  <ion-col>
+    <ion-row>
+      <p class="text" style="margin-top: 20px; width: max-content">
+        Indíca donde has usado este outfit
+      </p>
+    </ion-row>
+    <ion-item lines="none" style="margin-bottom: 20px">
+      <ion-input
+        type="text"
+        id="eventName"
+        placeholder="Nombre del evento (obligatorio)"
+        [(ngModel)]="eventName"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" style="margin-bottom: 20px">
+      <ion-input
+        type="text"
+        id="eventDescription"
+        placeholder="Descripción del evento"
+        [(ngModel)]="eventDescription"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" style="margin-bottom: 20px">
+      <ion-input
+        type="text"
+        id="eventLocality"
+        placeholder="Localización del evento"
+        [(ngModel)]="eventLocality"
+      ></ion-input>
+    </ion-item>
+    <ion-button
+      id="open-custom-dialog"
+      expand="block"
+      style="--background: #fff"
+    >
+      Con quien he quedado
+    </ion-button>
+
+    <ion-modal
+      id="example-modal"
+      #modal
+      trigger="open-custom-dialog"
+      style="
+        --height: 70%;
+        --max-width: 440px;
+        --border-width: 1px;
+        --border-style: solid;
+        --border-color: #fff;
+        --border-radius: 10px;
+      "
+    >
+      <ng-template>
+        <div
+          class="wrapper"
+          style="padding: 10px; overflow-y: scroll; height: 100%"
+        >
+          <h1
+            style="
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            "
+          >
+            Selecciona los amigos con los que has usado la ropa
+          </h1>
+
+          <ion-list>
+            <ion-item
+              button="true"
+              detail="false"
+              *ngFor="let user of following"
+              (click)="selectUser(user)"
+              [ngClass]="{ selected: eventFriends.includes(user.id) }"
+            >
+              <img
+                class="profile-img"
+                style="margin: 10px"
+                src="{{ user.avatar }}"
+                onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
+              />
+              <ion-label>{{ user.username }}</ion-label>
+            </ion-item>
+
+            <label *ngIf="following.length === 0"
+              >No estas siguiendo a ningún usuario</label
+            >
+
+            <div
+              style="
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                margin-top: 20px;
+              "
+            >
+              <ion-button
+                (click)="modal.dismiss()"
+                style="--background: #fff; width: 150px"
+              >
+                Aceptar
+              </ion-button>
+            </div>
+          </ion-list>
+        </div>
+      </ng-template>
+    </ion-modal>
+  </ion-col>
+</div>
