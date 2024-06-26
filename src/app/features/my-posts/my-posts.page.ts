@@ -38,7 +38,7 @@ export class MyPostsPage implements OnInit {
 
   getPosts() {
     this.postService
-      .getPosts(this.signalsService.getUserSignal()().id)
+      .getPostsByUserId(this.signalsService.getUserSignal()().id)
       .pipe(
         catchError((error) => {
           return of(error);
