@@ -26,6 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'post/:id',
+    canActivate: [CanActivateGuard],
     loadChildren: () =>
       import('./features/post/post.module').then((m) => m.PostPageModule),
   },
@@ -46,9 +47,22 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'chat',
+    canActivate: [CanActivateGuard],
+    title: 'Clout - Lista de chats',
+    loadChildren: () =>
+      import('../app/features/chats/chats.module').then(
+        (m) => m.ChatsPageModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
+  },  {
+    path: 'chat',
+    loadChildren: () => import('./features/chat/chat.module').then( m => m.ChatPageModule)
   },
+
 ];
 
 @NgModule({

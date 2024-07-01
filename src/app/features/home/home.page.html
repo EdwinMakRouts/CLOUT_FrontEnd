@@ -1,9 +1,23 @@
 <ion-content>
   <ion-grid>
-    <ion-row class="row">
+    <ion-row class="row" style="justify-content: space-between">
       <ion-button (click)="closeSesion()">
         <ion-icon
           src="../../../assets/icons/ic-log-out.svg"
+          id="log-out-icon"
+        ></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToChats()">
+        <div *ngIf="notifications">
+          <ion-icon
+            src="../../../assets/icons/ic-chat.svg"
+            id="log-out-icon"
+          ></ion-icon>
+          <div class="notification"></div>
+        </div>
+        <ion-icon
+          *ngIf="!notifications"
+          src="../../../assets/icons/ic-chat.svg"
           id="log-out-icon"
         ></ion-icon>
       </ion-button>

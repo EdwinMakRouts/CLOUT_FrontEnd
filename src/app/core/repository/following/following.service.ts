@@ -10,6 +10,10 @@ export class FollowingRepository extends Repository {
     super(injector);
   }
 
+  getAllUsers() {
+    return this.doRequest<Following[]>('get', '/followers');
+  }
+
   /**
    *
    * @param id

@@ -16,6 +16,7 @@ import { FollowingService } from 'src/app/core/services/following/following.serv
 import { PostService } from 'src/app/core/services/post/post.service';
 import { SignalsService } from 'src/app/core/services/signals/signals.service';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { ChatService } from 'src/app/core/services/chat/chat.service';
 import { EncryptionService } from 'src/app/shared/utils/encryption.service';
 import { ToastService } from 'src/app/shared/utils/toast.service';
 
@@ -31,6 +32,7 @@ export class HomePage {
     { value: 'tecnología', label: 'Y2k' },
   ];
 
+  notifications = false;
   img!: string;
   description!: string;
 
@@ -60,13 +62,15 @@ export class HomePage {
     private cd: ChangeDetectorRef,
     private encryptionService: EncryptionService,
     private userService: UserService,
-    private followingService: FollowingService
+    private followingService: FollowingService,
+    private chatService: ChatService
   ) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
     this.userSignal = this.signalsService.getUserSignal();
     console.log('user', this.userSignal);
     console.log('userSignal()', this.userSignal());
     this.getFollowing();
+    //this.isNotifications();
   }
 
   ionViewDidEnter() {
@@ -121,6 +125,19 @@ export class HomePage {
           console.log('LO QUE ME LLEGA DE LOS POSTS ES ESTO: ', response);
           this.posts = response;
           this.postsArrived = true;
+        }
+      });
+  }
+
+  async isNotifications() {
+    this.chatService
+      .isThereNewMessagesInChat(this.userSignal().id, 0)
+      .subscribe((response: any) => {
+        console.log('response NOTIFICATIONS', response);
+        if (response.error) {
+          this.toastService.presentToast('Error al obtener las notificaciones');
+        } else {
+          this.notifications = response.newMessages;
         }
       });
   }
@@ -299,5 +316,9 @@ export class HomePage {
     const url = `${window.location.origin}/post/${postId}`;
     navigator.clipboard.writeText(url);
     this.toastService.presentToast('URL copiada al portapapeles');
+  }
+
+  goToChats() {
+    this.navCtrl.navigateForward('/chat');
   }
 }

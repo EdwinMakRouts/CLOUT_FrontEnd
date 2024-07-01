@@ -1,0 +1,147 @@
+* {
+  --background: #000000;
+  font-family: JetBrains Mono;
+}
+
+.user-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #fff;
+  margin-top: 2rem;
+}
+
+#close-icon {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  height: 18px;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.loading {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  min-height: 92%;
+  max-height: 92%;
+}
+
+#chat-container {
+  width: 90%;
+  min-height: 100%;
+  //margin: 0 16px 25px 16px;
+  border: 1px solid #ccc;
+  background-color: #000;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ccc;
+}
+.message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+}
+
+#input-container {
+  display: flex;
+  padding: 10px;
+}
+
+#message-input {
+  flex: 4;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.send-button {
+  flex: 1;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.send-button-disabled {
+  flex: 1;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  background-color: #9c9c9c;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#send-button:hover {
+  background-color: #0056b3;
+}
+
+.my-message {
+  background-color: #007bff;
+  padding: 10px;
+  color: white;
+  margin-left: auto;
+  max-width: 70%;
+  margin-bottom: 10px;
+  border-radius: 15px;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+}
+
+.other-message {
+  background-color: #e0e0e0;
+  color: black;
+  margin-right: auto;
+  max-width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+}
+
+.date {
+  text-wrap: pretty;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: lowercase;
+  justify-content: end;
+  display: flex;
+}
+
+.date-blue {
+  color: #c1c1c1;
+}
+
+.date-grey {
+  color: #323232;
+}

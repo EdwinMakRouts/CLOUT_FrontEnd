@@ -1,0 +1,79 @@
+* {
+  --background: #000000;
+}
+
+.content {
+  margin: 20px 2rem;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.username {
+  color: #c1c1c1;
+  font-family: JetBrains Mono;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+}
+
+.message {
+  margin: 8px 0px;
+  max-width: 314px;
+  max-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date {
+  color: #c1c1c1;
+  text-wrap: pretty;
+  font-family: JetBrains Mono;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: lowercase;
+}
+
+.notification {
+  background: salmon;
+  border: 1px solid salmon;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 45px;
+}
+
+.loading {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+#close-icon {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  height: 18px;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+#create-icon {
+  margin-top: 2rem;
+  margin-right: 1rem;
+  height: 30px;
+  width: 30px;
+  flex-shrink: 0;
+}

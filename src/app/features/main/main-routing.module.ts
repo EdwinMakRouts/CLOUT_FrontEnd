@@ -22,18 +22,6 @@ const routes: Routes = [
             (m) => m.CalendarPageModule
           ),
       },
-      // {
-      //   path: 'profile',
-      //   loadChildren: () =>
-      //     import('../profile/profile.module').then((m) => m.ProfilePageModule),
-      // },
-      // {
-      //   path: 'other-profile',
-      //   loadChildren: () =>
-      //     import('../other-profile/other-profile.module').then(
-      //       (m) => m.OtherProfilePageModule
-      //     ),
-      // },
       {
         path: 'profile',
         title: 'Clout - Perfil',
@@ -52,6 +40,12 @@ const routes: Routes = [
         title: 'Clout - Buscar',
         loadChildren: () =>
           import('../search/search.module').then((m) => m.SearchPageModule),
+      },
+      {
+        path: 'chat',
+        title: 'Clout - Chats',
+        loadChildren: () =>
+          import('../chats/chats.module').then((m) => m.ChatsPageModule),
       },
     ],
   },

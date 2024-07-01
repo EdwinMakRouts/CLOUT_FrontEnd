@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar id="close-placeholder">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon
+          src="../../../assets/icons/ic-close.svg"
+          id="close-icon"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <div
+      style="justify-content: center; display: flex; margin-right: 1rem"
+      (click)="goToProfile()"
+      *ngIf="!loading"
+    >
+      <ion-row>
+        <img
+          src="{{ hisUser.avatar }}"
+          class="user-avatar"
+          onerror="this.src = 'https://images.hola.com/imagenes/mascotas/20210217184541/gatos-gestos-lenguaje-significado/0-922-380/gatos-gestos-m.jpg?tx=w_680'"
+        />
+        <ion-title style="margin-top: 2rem; padding: 0; padding-left: 5px"
+          >@{{ hisUser.username }}</ion-title
+        >
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-col>
+    <div *ngIf="loading" class="loading">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </div>
+
+    <div *ngIf="!loading" class="container">
+      <div id="chat-container">
+        <div id="messages" #messagesContainer>
+          <div
+            *ngFor="let message of messages"
+            [ngClass]="{
+              'my-message': message.userId === myId,
+              'other-message': message.userId !== myId}"
+          >
+            <label>{{ message.message }}</label>
+            <div class="date">
+              <label
+                [ngClass]="{
+                'date-blue': message.userId === myId,
+                'date-grey': message.userId !== myId}"
+                >{{ transformDate(message.createdAt) }}</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div id="input-container" style="min-height: 40px">
+          <input
+            type="text"
+            id="message-input"
+            placeholder="Escribe tu mensaje..."
+            [(ngModel)]="commentText"
+            maxlength="255"
+            min-length="1"
+          />
+          <button
+            *ngIf="!disableButton()"
+            class="send-button"
+            (click)="sendMessage()"
+          >
+            Enviar
+          </button>
+          <button
+            *ngIf="disableButton()"
+            class="send-button-disabled"
+            [disabled]="true"
+          >
+            Enviar
+          </button>
+        </div>
+      </div>
+    </div>
+  </ion-col>
+</ion-content>

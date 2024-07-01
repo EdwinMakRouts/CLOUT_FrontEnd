@@ -7,6 +7,10 @@ import { FollowingRepository } from '../../repository/following/following.servic
 export class FollowingService {
   constructor(private repo: FollowingRepository) {}
 
+  public getAllUsers() {
+    return this.repo.getAllUsers();
+  }
+
   /**
    *
    * @param id
