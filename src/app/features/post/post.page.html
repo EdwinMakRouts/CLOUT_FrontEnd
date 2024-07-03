@@ -61,7 +61,7 @@
             ></ion-icon>
           </div>
         </ion-row>
-        <ion-row>
+        <ion-row *ngIf="!pressedComment">
           <div class="info-desc">
             <p class="biografia">{{post.text}}</p>
           </div>
@@ -83,7 +83,11 @@
 
   <ion-grid *ngIf="pressedComment" class="mobile">
     <div class="mobile-container">
-      <div class="mobile-close" (click)="toggleComments()">
+      <div
+        class="mobile-close"
+        (click)="toggleComments()"
+        style="cursor: pointer"
+      >
         <ion-icon src="../../../assets/icons/ic-close.svg" id="close-icon">
         </ion-icon>
       </div>
@@ -106,22 +110,26 @@
             </ion-item>
           </ion-list>
         </ion-content>
-        <ion-row class="comment-input">
-          <ion-item class="input-holder">
-            <div class="input-comment-holder">
-              <ion-input
-                placeholder="Escribe un comentario"
-                class="input-comment"
-                maxlength="255"
-                min-length="1"
-                [(ngModel)]="commentText"
-              ></ion-input>
-            </div>
-          </ion-item>
+        <ion-row class="comment-input" style="padding: 10px">
+          <div class="input-comment-holder">
+            <input
+              type="text"
+              placeholder="Escribe un comentario"
+              class="input-comment"
+              maxlength="255"
+              minlength="1"
+              [(ngModel)]="commentText"
+            />
+          </div>
           <div class="send-holder" (click)="createComment()">
-            <ion-button class="send-comment" [disabled]="commentText === ''"
-              >Enviar</ion-button
+            <button
+              [disabled]="commentText === ''"
+              [ngClass]="{
+              'send-comment': commentText !== '',
+              'send-comment-disabled': commentText === ''}"
             >
+              Enviar
+            </button>
           </div>
         </ion-row>
       </div>

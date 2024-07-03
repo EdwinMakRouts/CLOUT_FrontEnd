@@ -23,36 +23,11 @@
     </ion-item>
     <ion-item>
       <ion-input
-        label="Altura"
-        labelPlacement="floating"
-        formControlName="height"
-        type="number"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
         required
         label="Fecha de nacimiento"
         labelPlacement="floating"
         formControlName="bornDate"
         type="date"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        label="Peso"
-        labelPlacement="floating"
-        formControlName="weight"
-        type="number"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        required
-        label="Email"
-        labelPlacement="floating"
-        formControlName="email"
-        type="text"
       ></ion-input>
     </ion-item>
     <ion-item>
@@ -69,11 +44,36 @@
     <ion-item>
       <ion-input
         required
+        label="Email"
+        labelPlacement="floating"
+        formControlName="email"
+        type="text"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        required
         label="Contraseña"
         labelPlacement="floating"
         formControlName="password"
         type="password"
         minlength="6"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="Altura (Opcional)"
+        labelPlacement="floating"
+        formControlName="height"
+        type="number"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="Peso (Opcional)"
+        labelPlacement="floating"
+        formControlName="weight"
+        type="number"
       ></ion-input>
     </ion-item>
     <ion-item class="photo" lines="none">
