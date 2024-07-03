@@ -150,4 +150,10 @@ export class ChatPage implements OnInit {
         console.log('Actualizado con exito');
       });
   }
+
+  onKeyPress(event: KeyboardEvent): void {
+    if (event.key === 'Enter' && this.commentText.trim() !== '') {
+      this.sendMessage();
+    }
+  }
 }

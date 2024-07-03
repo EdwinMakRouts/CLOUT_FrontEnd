@@ -219,4 +219,10 @@ export class PostPage implements OnInit {
       ]);
     }
   }
+
+  onKeyPress(event: KeyboardEvent): void {
+    if (event.key === 'Enter' && this.commentText.trim() !== '') {
+      this.createComment();
+    }
+  }
 }

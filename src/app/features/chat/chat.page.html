@@ -63,6 +63,7 @@
             [(ngModel)]="commentText"
             maxlength="255"
             min-length="1"
+            (keypress)="onKeyPress($event)"
           />
           <button
             *ngIf="!disableButton()"

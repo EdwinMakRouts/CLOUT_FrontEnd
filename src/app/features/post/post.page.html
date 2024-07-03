@@ -119,6 +119,7 @@
               maxlength="255"
               minlength="1"
               [(ngModel)]="commentText"
+              (keypress)="onKeyPress($event)"
             />
           </div>
           <div class="send-holder" (click)="createComment()">
