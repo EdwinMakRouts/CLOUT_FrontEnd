@@ -44,7 +44,7 @@
       </div>
       <ion-row>
         <ion-label class="ion-padding lab"
-          >No tienes cuenta? Regístrate aquí</ion-label
+          >¿No tienes cuenta? Regístrate aquí</ion-label
         >
       </ion-row>
       <div>
@@ -54,6 +54,13 @@
           >
         </ion-row>
       </div>
+      <ion-row>
+        <ion-label
+          class="ion-padding lab link"
+          (click)="goTo('forgot-password')"
+          >¿Te has olvidado la contraseña?</ion-label
+        >
+      </ion-row>
     </div>
   </form>
 </ion-content>

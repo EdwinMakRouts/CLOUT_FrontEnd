@@ -256,7 +256,7 @@ ion-button {
 }
 
 .selected {
-  --background: #95de90;
-  border: none;
-  --color: #000000;
+  border: 1px solid #000000;
+  --background: #0056b3;
+  --color: #fff;
 }

@@ -1,3 +1,7 @@
+* {
+  font-family: JetBrains Mono;
+}
+
 ion-col {
   padding: 0;
 }
@@ -191,10 +195,11 @@ img {
 }
 
 ion-item {
-  border: 3px solid #808080;
+  border: 1px solid #808080;
   border-radius: 33px;
   margin-top: 20px;
 }
+
 ion-toolbar {
   --background: #000000;
 }
@@ -254,9 +259,9 @@ ion-button {
 }
 
 .selected {
-  --background: #95de90;
-  border: none;
-  --color: #000000;
+  border: 1px solid #000000;
+  --background: #0056b3;
+  --color: #fff;
 }
 
 .notification {

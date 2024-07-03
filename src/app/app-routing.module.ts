@@ -56,13 +56,16 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('./features/forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordPageModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
-  },  {
-    path: 'chat',
-    loadChildren: () => import('./features/chat/chat.module').then( m => m.ChatPageModule)
   },
-
 ];
 
 @NgModule({
