@@ -164,6 +164,11 @@ export class ChatsPage implements OnInit {
     this.modal.dismiss();
   }
 
+  goToHelpChat() {
+    this.navCtrl.navigateForward(['chat', 'chat']);
+    this.modal.dismiss();
+  }
+
   goToNewChat(user: Following) {
     this.stateService.setUser(user);
     this.navCtrl.navigateForward(['chat', 0]);

@@ -34,4 +34,10 @@ export class ChatRepository extends Repository {
 
     return this.doRequest('get', `/chat/${userId}/${chatId}`);
   }
+
+  sendMessageToChatPDF(message: string) {
+    return this.doRequest('post', `/chat/chat`, {
+      message: message,
+    });
+  }
 }

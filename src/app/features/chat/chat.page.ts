@@ -34,6 +34,7 @@ export class ChatPage implements OnInit {
   loading = false;
 
   commentText = '';
+  isChatPDF = false;
 
   constructor(
     private stateService: StateService,
@@ -62,8 +63,16 @@ export class ChatPage implements OnInit {
       this.loading = false;
     }
 
-    if (this.route.snapshot.paramMap.get('id') != '0') {
+    if (
+      this.route.snapshot.paramMap.get('id') != '0' &&
+      this.route.snapshot.paramMap.get('id') != 'chat'
+    ) {
       this.getInitialData();
+    }
+
+    if (this.route.snapshot.paramMap.get('id') == 'chat') {
+      this.loading = false;
+      this.isChatPDF = true;
     }
   }
 
@@ -81,18 +90,52 @@ export class ChatPage implements OnInit {
   }
 
   sendMessage() {
-    this.chatService
-      .createMessage(this.myId, this.hisUser.id, this.commentText)
-      .subscribe((res: any) => {
-        if (res.error) {
-          this.toastService.presentToast('Error al enviar el mensaje');
-        } else {
-          if (this.route.snapshot.paramMap.get('id') != '0') location.reload();
+    this.loading = true;
 
-          if (this.route.snapshot.paramMap.get('id') == '0')
-            this.navCtrl.navigateForward([`chat/${res.chat.id}`]);
-        }
-      });
+    if (!this.isChatPDF) {
+      this.chatService
+        .createMessage(this.myId, this.hisUser.id, this.commentText)
+        .subscribe((res: any) => {
+          if (res.error) {
+            this.toastService.presentToast('Error al enviar el mensaje');
+            this.loading = false;
+          } else {
+            this.loading = false;
+            if (this.route.snapshot.paramMap.get('id') != '0')
+              location.reload();
+
+            if (this.route.snapshot.paramMap.get('id') == '0')
+              this.navCtrl.navigateForward([`chat/${res.chat.id}`]);
+          }
+        });
+    } else {
+      this.chatService
+        .sendMessageToChatPDF(this.commentText)
+        .subscribe((res: any) => {
+          if (res.error) {
+            this.toastService.presentToast('Error al enviar el mensaje');
+          } else {
+            const myMes = {
+              id: this.myId,
+              message: this.commentText,
+              userId: this.myId,
+              createdAt: new Date(),
+            } as Message;
+            this.messages.push(myMes);
+
+            const mes = {
+              id: 0,
+              message: res.content,
+              userId: 0,
+              createdAt: new Date(),
+            } as Message;
+
+            this.messages.push(mes);
+
+            this.loading = false;
+          }
+        });
+    }
   }
 
   getInitialData() {

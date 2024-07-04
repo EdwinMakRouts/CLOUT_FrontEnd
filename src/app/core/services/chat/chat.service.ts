@@ -26,4 +26,8 @@ export class ChatService {
   isThereNewMessagesInChat(userId: number, chatId?: number) {
     return this.repo.isThereNewMessagesInChat(userId, chatId);
   }
+
+  sendMessageToChatPDF(message: string) {
+    return this.repo.sendMessageToChatPDF(message);
+  }
 }
