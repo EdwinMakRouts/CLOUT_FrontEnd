@@ -6,10 +6,10 @@ export abstract class Repository {
   private paths = Object.freeze({
     dev: 'https://api.jorma28j.upv.edu.es',
     prod: 'https://api-pin.crazyjmb.com',
-    temp: 'https://7567-91-106-20-32.ngrok-free.app',
+    temp: 'https://0b22-91-106-20-32.ngrok-free.app',
     localhost: 'http://localhost:3000',
   });
-  protected basePath = this.paths.localhost;
+  protected basePath = this.paths.temp;
   protected http: HttpClient = this.injector.get(HttpClient);
 
   constructor(protected injector: Injector) {}
