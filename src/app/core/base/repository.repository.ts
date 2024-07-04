@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,9 +6,10 @@ export abstract class Repository {
   private paths = Object.freeze({
     dev: 'https://api.jorma28j.upv.edu.es',
     prod: 'https://api-pin.crazyjmb.com',
+    temp: 'https://7567-91-106-20-32.ngrok-free.app',
     localhost: 'http://localhost:3000',
   });
-  protected basePath = this.paths.localhost;
+  protected basePath = this.paths.temp;
   protected http: HttpClient = this.injector.get(HttpClient);
 
   constructor(protected injector: Injector) {}
@@ -19,6 +20,13 @@ export abstract class Repository {
     body: unknown = undefined,
     params?: keyof HttpParams
   ): Observable<T> {
-    return this.http.request<T>(method, `${this.basePath}${url}`, { body });
+    const headers = new HttpHeaders().set(
+      'ngrok-skip-browser-warning',
+      '69420'
+    );
+    return this.http.request<T>(method, `${this.basePath}${url}`, {
+      body,
+      headers,
+    });
   }
 }
