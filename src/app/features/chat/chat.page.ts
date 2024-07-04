@@ -134,6 +134,7 @@ export class ChatPage implements OnInit {
 
             this.loading = false;
           }
+          this.commentText = '';
         });
     }
   }
