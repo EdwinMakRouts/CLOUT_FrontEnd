@@ -35,6 +35,7 @@
 //     }
 //   }
 // }
+/// <reference types="cypress-xpath" />
 
 declare namespace Cypress {
   interface Chainable<Subject> {
